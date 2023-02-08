@@ -1,0 +1,33 @@
+<soapenv:Envelope xmlns:geo="http://geomodel.eu/schema/common/geo" xmlns:pv="http://geomodel.eu/schema/common/pv" xmlns:pvp="http://geomodel.eu/schema/ws/pvplanner" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+<soapenv:Header>
+
+<wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+	<wsu:Timestamp wsu:Id="TS-5D314EB5316026B4A516756359304384">
+		<wsu:Created>2023-02-05T22:25:30Z</wsu:Created>
+		<wsu:Expires>2023-02-05T22:30:30Z</wsu:Expires>
+	</wsu:Timestamp>
+	<wsse:UsernameToken wsu:Id="UsernameToken-5D314EB5316026B4A516756359304383">
+		<wsse:Username>demo</wsse:Username>
+		<wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">kRO2SOgEVIw63yGwuh7UHom1FwQ=</wsse:Password>
+		<wsse:Nonce EncodingType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary">zgv66AO0DRN1NzGYmF49Yw==</wsse:Nonce>
+		<wsu:Created>2023-02-05T22:25:30.438Z</wsu:Created>
+		</wsse:UsernameToken>
+</wsse:Security>
+</soapenv:Header>
+
+
+
+
+<SOAP-ENV:Header>
+<wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+	<wsu:Timestamp wsu:Id="TS-778f2486-625d-42bd-ade8-218a2cb7fd91">
+		<wsu:Created>2023-02-05T22:22:52Z</wsu:Created>
+		<wsu:Expires>2023-02-05T22:27:52Z</wsu:Expires>
+	</wsu:Timestamp>
+		<wsse:UsernameToken wsu:Id="UsernameToken-778f2486-625d-42bd-ade8-218a2cb7fd91">
+		<wsse:Username>PvPlanner_VigorSolar</wsse:Username>
+		<wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">B5+seF8qbBSn2jKEbifbPlOz1M4=</wsse:Password>
+		<wsse:Nonce EncodingType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary">14u5JZ5dZImXcoljmPDsmQ==</wsse:Nonce>
+		<wsu:Created>2023-02-05T22:22:52Z</wsu:Created></wsse:UsernameToken></wsse:Security></SOAP-ENV:Header>
+	
+<S:Body><ns3:calculateRequest xmlns="http://geomodel.eu/schema/common/pv" xmlns:ns2="http://geomodel.eu/schema/common/geo" xmlns:ns3="http://geomodel.eu/schema/ws/pvplanner"><ns3:site lat="48.61259" lng="20.827079"><ns2:terrain azimuth="175" elevation="45"/><system availability="99.0" installationType="ROOF_MOUNTED" installedPower="1.0"><module type="CSI"/><inverter><efficiency xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" percent="97.5" xsi:type="EfficiencyConstant"/></inverter></system></ns3:site></ns3:calculateRequest></S:Body></S:Envelope>
