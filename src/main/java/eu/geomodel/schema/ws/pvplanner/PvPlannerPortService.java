@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "PvPlannerPortService", targetNamespace = "http://geomodel.eu/schema/ws/pvplanner", wsdlLocation = "file:/home/chelito/Proyectos/vigorsolar/solargis-test/src/main/resources/pvPlannerWebService.wsdl")
+@WebServiceClient(name = "PvPlannerPortService", targetNamespace = "http://geomodel.eu/schema/ws/pvplanner", wsdlLocation = "file:C:\\Users\\marcelo.araya-gomez\\eclipse-workspace-vigorsolar\\solargis-test\\src\\main\\resources\\pvPlannerWebService.wsdl")
 public class PvPlannerPortService
     extends Service
 {
@@ -30,7 +30,7 @@ public class PvPlannerPortService
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("file:/home/chelito/Proyectos/vigorsolar/solargis-test/src/main/resources/pvPlannerWebService.wsdl");
+            url = new URL("file:C:\\Users\\marcelo.araya-gomez\\eclipse-workspace-vigorsolar\\solargis-test\\src\\main\\resources\\pvPlannerWebService.wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }
