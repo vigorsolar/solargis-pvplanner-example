@@ -1,5 +1,6 @@
 package cl.vigorsolar.solargis.test;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,14 +28,22 @@ public class App {
 	private static final String USERNAME = "demo";
 	private static final String PASSWORD = "demo";
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		System.setProperty("com.sun.xml.ws.transport.http.client.HttpTransportPipe.dump", "true");
 		System.setProperty("com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.dump", "true");
 		System.setProperty("com.sun.xml.ws.transport.http.HttpAdapter.dump", "true");
 		System.setProperty("com.sun.xml.internal.ws.transport.http.HttpAdapter.dump", "true");
 		System.setProperty("com.sun.xml.internal.ws.transport.http.HttpAdapter.dumpTreshold", "999999");
 		
-		PvPlannerPortService service = new PvPlannerPortService();
+		//URL url = new URL("https://solargis.info/ws/soap/pvPlannerWebService.wsdl");
+		/**
+		 * el WSDL ubicado en URL https://solargis.info/ws/soap/pvPlannerWebService.wsdl, retorna la ubicación del servicio como
+		 * http://solargis.info:80/ws/pvplanner/, esta última URL retorna código "308 - Permanent Redirect", por esta razón se utiliza
+		 * un WSDL propio que apunta a la URL válida (https://solargis.info/ws/pvPlanner/) 
+		 */
+		URL url = new URL("file:///home/chelito/Proyectos/vigorsolar/solargis-test/src/main/resources/pvPlannerWebService.wsdl");
+		
+		PvPlannerPortService service = new PvPlannerPortService(url);
 		
 		service.setHandlerResolver(portInfo -> {
 			List<Handler> handlerList = new ArrayList<>();
