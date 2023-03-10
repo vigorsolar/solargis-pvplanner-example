@@ -18,13 +18,15 @@ import eu.geomodel.schema.ws.pvplanner.PvPlannerPort;
 import eu.geomodel.schema.ws.pvplanner.PvPlannerPortService;
 import eu.geomodel.schema.ws.pvplanner.PvSystem;
 import eu.geomodel.schema.ws.pvplanner.Site;
-import eu.geomodel.schema.ws.pvplanner.Terrain;
 
 /**
- * Hello world!
+ * @author chelito
  *
  */
 public class App {
+	private static final String USERNAME = "demo";
+	private static final String PASSWORD = "demo";
+	
 	public static void main(String[] args) {
 		System.setProperty("com.sun.xml.ws.transport.http.client.HttpTransportPipe.dump", "true");
 		System.setProperty("com.sun.xml.internal.ws.transport.http.client.HttpTransportPipe.dump", "true");
@@ -36,7 +38,7 @@ public class App {
 		
 		service.setHandlerResolver(portInfo -> {
 			List<Handler> handlerList = new ArrayList<>();
-			handlerList.add(new PvPlannerAuthenticationHandler());
+			handlerList.add(new PvPlannerAuthenticationHandler(USERNAME, PASSWORD));
 			return handlerList;
 		});
 	
@@ -44,8 +46,8 @@ public class App {
 		
 		CalculateRequest request = new CalculateRequest();	    
 	    Site site = new Site();
-	    site.setLat(-33.7031729);
-	    site.setLng(-70.5921522);
+	    site.setLat(48.612590);
+	    site.setLng(20.827079);
 	    GeometryFixedOneAngle geometry = new GeometryFixedOneAngle();
 	    geometry.setAzimuth(0);
 	    geometry.setTilt(30);
@@ -94,10 +96,7 @@ public class App {
 	    request.setSite(site);
 	
 		CalculateResponse response = port.calculate(request);
-	
-		
 		System.out.println(response.getCalculation().getOutput().getEsm().getMonthly());
-		
 		System.out.println(response.getSummary());
 		
 	}

@@ -23,9 +23,14 @@ import javax.xml.ws.handler.soap.SOAPHandler;
 import javax.xml.ws.handler.soap.SOAPMessageContext;
 
 public class PvPlannerAuthenticationHandler implements SOAPHandler<SOAPMessageContext> {
-	private static final String USERNAME = "PvPlanner_VigorSolar";
-	private static final String PASSWORD = "d1Tl931rdvjrR3Q1xgPY";
+	private String username;
+	private String password;
 	private static final int WSS_TTL = 300;
+	
+	public PvPlannerAuthenticationHandler(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
 
 	@Override
 	public boolean handleMessage(SOAPMessageContext context) {
@@ -43,7 +48,7 @@ public class PvPlannerAuthenticationHandler implements SOAPHandler<SOAPMessageCo
 			
 			// password & nonce
 			final byte[] nonceBytes = generateNonce();
-			byte[] passwordDigestBytes = constructPasswordDigest(nonceBytes, createdDate, PASSWORD);
+			byte[] passwordDigestBytes = constructPasswordDigest(nonceBytes, createdDate, this.password);
 			String passwordDigestBase64Encoded = Base64.getEncoder().encodeToString(passwordDigestBytes);
 			String nonceBase64Encoded = Base64.getEncoder().encodeToString(nonceBytes);
 			
@@ -67,7 +72,7 @@ public class PvPlannerAuthenticationHandler implements SOAPHandler<SOAPMessageCo
 			SOAPElement usernameToken = security.addChildElement("UsernameToken", "wsse");
 			usernameToken.addAttribute(new QName("wsu:Id"), String.format("UsernameToken-%s", id));
 			SOAPElement username = usernameToken.addChildElement("Username", "wsse");
-			username.addTextNode(USERNAME);
+			username.addTextNode(this.username);
 			SOAPElement password = usernameToken.addChildElement("Password", "wsse");
 			password.setAttribute("Type",
 					"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest");
